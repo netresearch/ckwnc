@@ -30,7 +30,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <title>ckwnc - uml sequence diagram editor</title>
     <meta name="keywords" content="uml,sequence,diagram,unified,modelling,language,agile,process, model,design,specification" />
     <meta name="description" content="ckwnc is a uml sequence diagram creation tool that uses an intuitive c-style language to automatically create uml diagrams that can be saved as an image or embedded directly into other pages" />
-    <link rel="shortcut icon" href="http://www.ckwnc.com/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="codemirror/codemirror.css">
     <link rel="stylesheet" href="codemirror/eclipse.css">
     <link rel="stylesheet" href="style.css">
@@ -40,70 +40,23 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <script type="text/javascript" src="jquery-1.4.4.min.js"></script>
     <script type="text/javascript" src="jquery.history.js"></script>
     <script type="text/javascript" src="ckwnc.js"></script>
-    <script type="text/javascript" src="script.js"></script>
     <script type="text/javascript" src="index.js"></script>
   </head>
   <body>
-<div id="social">
-<div class="social-content">
-
-<!-- TWITTER -->
-<p>
-<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.ckwnc.com" data-text="ckwnc the #agile #uml sequence diagramming tool" data-count="horizontal" data-via="ckwnc">Tweet</a>
-<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-</p>
-<!-- TWITTER -->
-<p>
-<a href="http://twitter.com/ckwnc" class="twitter-follow-button">Follow @ckwnc</a>
-<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
-</p>
-<!-- FB -->
-<p>
-<div id="fb-root"></div>
-<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-<fb:like href="http://www.ckwnc.com" send="false" width="300" show_faces="false"></fb:like>
-</p>
-<!--  DIGG -->
-<p>
-<script type="text/javascript"><!--
-(function() {
-var s = document.createElement('SCRIPT'), s1 = document.getElementsByTagName('SCRIPT')[0];
-s.type = 'text/javascript';
-s.async = true;
-s.src = 'http://widgets.digg.com/buttons.js';
-s1.parentNode.insertBefore(s, s1);
-})();
-// --></script>
-<a class="DiggThisButton DiggCompact" href="http://digg.com/submit?url=http%3A//www.ckwnc.com"></a>
-</p>
-<!-- OHLOH -->
-<script type="text/javascript" src="http://www.ohloh.net/p/585954/widgets/project_partner_badge.js"></script>
-<!-- DONATE -->
-<p>
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-<input type="hidden" name="cmd" value="_s-xclick" />
-<input type="hidden" name="hosted_button_id" value="CC4QMHPX4BAQ2" />
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" />
-<img alt="" border="0" src="https://www.paypalobjects.com/en_AU/i/scr/pixel.gif" width="1" height="1" />
-</form>
-</p>
-</div>
-</div>
 
 <div id="dialog-overlay"></div>
 <div id="dialog-box">
 	<div class="dialog-content">
-		<div id="dialog-message">Loading Diagram</div>	
+		<div id="dialog-message">Loading Diagram</div>
 	</div>
 </div>
 
 <div id="error-message"></div>
 <div id="title">
-   <div id="ckwnc"><a href="http://www.ckwnc.com"><img src="img/title.png" border="0" height="80" width="128" alt="ckwnc - uml sequence diagram tool"/></a></div>
+   <div id="ckwnc"><a href="/"><img src="img/title.png" border="0" height="80" width="128" alt="ckwnc - uml sequence diagram tool"/></a></div>
    <div id="menu">
 	  <div><a href="javascript:editOrSave();"><img id="editOrSave" src="img/edit.png" border="0" height="26" width="26" alt="save" /><br/><span id="editOrSaveText">edit</span></a></div>
 	  <div><a href="javascript:image();"><img src="img/file.png" border="0" height="26" width="26" alt="save as image" /><br/>image</a></div>
-	  <div><a href="javascript:social();"><img src="img/group.png" border="0" height="26" width="26" alt="social" /><br/>social</a></div>
 	  <div><a href="javascript:help();"><img src="img/info.png" border="0" height="26" width="26" alt="help" /><br/>help</a></div>
    </div>
 </div>

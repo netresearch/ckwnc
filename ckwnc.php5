@@ -2,7 +2,7 @@
 /*
  * Copyright (c) 2011, Daniel Walton (daniel@belteshazzar.com)
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
  *     * Redistributions of source code must retain the above copyright
@@ -13,7 +13,7 @@
  *     * Neither the name of the <organization> nor the
  *       names of its contributors may be used to endorse or promote products
  *       derived from this software without specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -26,6 +26,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+header('HTTP/1.0 500 Internal server error');
 header("Content-type: text/plain");
 
 
@@ -44,7 +45,7 @@ class DB
 	private $PASS = 'PASSWORD';
 	private $NAME = 'ckwncdev';
 	*/
-	
+
 	// using live database
 	/*
 	private $HOST = 'HOSTNAME';
@@ -52,7 +53,7 @@ class DB
 	private $PASS = 'PASSWORD';
 	private $NAME = 'ckwncdev';
 	*/
-	
+
 	public function __construct()
 	{
 		mysql_connect($this->HOST,$this->USER,$this->PASS) or die("could not connect to db".mysql_error());
@@ -67,10 +68,12 @@ class DB
 	private function query( $sql )
 	{
 		$result = mysql_query($sql);
-		if (!$result) trigger_error(mysql_error(). " ||| " . $sql);
+		if ($result === false) {
+            trigger_error('SQL error: ' . mysql_error(). " ||| " . $sql);
+        }
 		return $result;
 	}
-	
+
 	public function insert( $sql )
 	{
 		$r = $this->query($sql);
@@ -85,7 +88,7 @@ class DB
 
 		$result = array();
 		while ( $temp = mysql_fetch_assoc($r) ) $result[] = $temp;
-		
+
 		return $result;
 	}
 }
@@ -95,7 +98,7 @@ class DB
 
 	if ( isset($_GET['id']) )
 	{
-		$result = $db->select("SELECT code FROM diagrams WHERE id=" . $_GET['id'] . ";");
+		$result = $db->select("SELECT code FROM diagrams WHERE id='" . mysql_real_escape_string($_GET['id']) . "'");
 		if ( count($result)==1 )
 		{
 			$result = array ('id' => $_GET['id'], 'code' => $result[0]['code'] );
@@ -108,14 +111,15 @@ class DB
 		if (get_magic_quotes_gpc())
 		{
 			$_POST['code'] = stripslashes($_POST['code']);
-        }
+	        }
 
-		$id = $db->insert("INSERT INTO diagrams (code) VALUES (\"" . mysql_escape_string( $_POST['code'] ) . "\");");
+		$id = $db->insert("INSERT INTO diagrams (code) VALUES ('" . mysql_real_escape_string( $_POST['code'] ) . "')");
 
 		$result = array ('id' => $id );
+                header('HTTP/1.0 201 Created');
+                header('Content-type: application/json');
 		echo json_encode($result);
-
-		exit;
+		exit(0);
 	}
 
 ?>
