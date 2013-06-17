@@ -1,0 +1,16 @@
+{
+  "name": "ckwnc",
+  "description": "uml sequence diagraming tool",
+  "version": "1",
+  "app": {
+    "urls": [
+      "http://www.ckwnc.com/"
+    ],
+    "launch": {
+      "web_url": "http://www.ckwnc.com/index.html"
+    }
+  },
+  "icons": {
+    "128": "icon_128.png"
+  }
+}

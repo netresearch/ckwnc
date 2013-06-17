@@ -1,0 +1,391 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<!--
+Copyright (c) 2012, Daniel Walton (daniel@belteshazzar.com)
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+    * Neither the name of the <organization> nor the
+      names of its contributors may be used to endorse or promote products
+      derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY
+DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <title>ckwnc help - uml sequence diagram editor</title>
+  <meta name="keywords" content="help,examples,description,feedback,faq,how,howto,uml,sequence,diagram,unified,modelling,language,agile,process, model,design,specification">
+  <meta name="description" content="ckwnc is a uml sequence diagram creation tool that uses an intuitive c-style language to automatically create uml diagrams that can be saved as an image or embedded directly into other pages">
+  <link rel="shortcut icon" href="http://www.ckwnc.com/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <link rel="stylesheet" type="text/css" href="help.css" />
+  <script type="text/javascript" src="jquery-1.4.4.min.js"></script>
+  <script type="text/javascript" src="ckwnc_min.js"></script>
+  <script type="text/javascript" src="script.js"></script>
+  <script type="text/javascript" src="help.js"></script>
+</head>
+
+<body>
+
+<div id="title">
+   <div id="ckwnc"><a href="http://www.ckwnc.com"><img src="img/title.png" border="0" height="80" width="128" alt="ckwnc - uml sequence diagram tool"/></a></div>
+   <div id="menu">
+	  <div class="disabled"><img id="editOrSave" src="img/edit.png" border="0" height="26" width="26" alt="save" /><br/><span id="editOrSaveText">edit</span></div>
+	  <div class="disabled"><img src="img/file.png" border="0" height="26" width="26" alt="image" /><br/>image</div>
+	  <div><a href="javascript:social();"><img src="img/group.png" border="0" height="26" width="26" alt="social" /><br/>social</a></div>
+	  <div class="disabled"><img src="img/info.png" border="0" height="26" width="26" alt="help" /><br/>help</div>
+   </div>
+</div>
+
+<div id="social">
+<div class="social-content">
+
+<!-- TWITTER -->
+<p>
+<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.ckwnc.com" data-text="ckwnc the #agile #uml sequence diagramming tool" data-count="horizontal" data-via="ckwnc">Tweet</a>
+<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+</p>
+<!-- TWITTER -->
+<p>
+<a href="http://twitter.com/ckwnc" class="twitter-follow-button">Follow @ckwnc</a>
+<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+</p>
+<!-- FB -->
+<p>
+<div id="fb-root"></div>
+<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
+<fb:like href="http://www.ckwnc.com" send="false" width="300" show_faces="false"></fb:like>
+</p>
+<!--  DIGG -->
+<p>
+<script type="text/javascript"><!--
+(function() {
+var s = document.createElement('SCRIPT'), s1 = document.getElementsByTagName('SCRIPT')[0];
+s.type = 'text/javascript';
+s.async = true;
+s.src = 'http://widgets.digg.com/buttons.js';
+s1.parentNode.insertBefore(s, s1);
+})();
+// --></script>
+<a class="DiggThisButton DiggCompact" href="http://digg.com/submit?url=http%3A//www.ckwnc.com"></a>
+</p>
+<!-- OHLOH -->
+<script type="text/javascript" src="http://www.ohloh.net/p/585954/widgets/project_partner_badge.js"></script>
+<!-- DONATE -->
+<p>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick" />
+<input type="hidden" name="hosted_button_id" value="CC4QMHPX4BAQ2" />
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" />
+<img alt="" border="0" src="https://www.paypalobjects.com/en_AU/i/scr/pixel.gif" width="1" height="1" />
+</form>
+</p>
+</div>
+</div>
+
+<div id="toc">
+<ul>
+<li><a href="#1">Overview</a></li>
+<li><a href="#2">Creating a Diagram</a> 
+<ul>
+<li><a href="#2-1">Objects /  Lifelines</a></li>
+<li><a href="#2-2">Synchronous Messages</a></li>
+<li><a href="#2-3">Synchronous Messages to Self</a></li>
+<li><a href="#2-4">Asynchronous Messages</a> 
+<ul>
+<li><a href="#2-4-1">Invalid Diagrams</a></li>
+<li><a href="#2-4-2">Pause</a></li>
+</ul>
+</li>
+<li><a href="#2-5">Object Creation</a></li>
+<li><a href="#2-6">Object Destruction</a></li>
+<li><a href="#2-7">A Note on Style</a></li>
+</ul>
+</li>
+<li><a href="#3">Saving a Diagram</a> 
+<ul>
+<li><a href="#3-1">As an Image</a></li>
+<li><a href="#3-2">As a Link</a></li>
+</ul>
+</li>
+<li><a href="#4">Embedding Diagrams</a> 
+<ul>
+<li><a href="#4-1">Using JQuery</a></li>
+<li><a href="#4-2">WordPress</a></li>
+<li><a href="#4-3">Google Gadget</a></li>
+<li><a href="#4-4">Other Methods</a></li>
+</ul>
+</li>
+<li><a href="#5">References</a> 
+<ul>
+<li><a href="#5-1">Other UML Sequence Diagraming Tools</a></li>
+<li><a href="#5-2">UML Sequence Diagraming References</a></li>
+</ul>
+</li>
+<li><a href="#6">Support and Feedback</a> 
+<ul>
+<li><a href="#6-1">About</a></li>
+<li><a href="#6-2">Contact</a></li>
+<li><a href="#6-3">Comments</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<div id="body">
+<h1 id="1">Overview</h1>
+<p>ckwnc is a free tool for creating UML sequence diagrams quickly and easily through an intuitive psuedo C-style language.</p>
+<p>There are so many UML modelling tools available, but they are not necessarily that simple to use having generally been derived from generic drawing programs. Why do they allow the creation of invalid diagrams? And why are they not dead simple to use? After all, the sequence diagram is one of the most useful UML tools at a programmers disposal for diagramatically designing and documenting code.</p>
+<p>The following is an example of how simple it is to create a ckwnc diagram.</p>
+<pre id="example1">  :actor
+  data:DataClass
+
+  data.get()
+  data.set()
+  {
+    DB.setValue()
+  }
+
+</pre>
+<script type="text/javascript"><!--
+  $(ckwnc.generate( $("#example1").text() )).insertAfter($("#example1"));
+// --></script>
+<h1 id="2">Creating a Diagram</h1>
+<p>This section details how to create UML sequence diagrams with ckwnc. A knowledge of UML sequence diagrams is assumed.</p>
+<h2 id="2-1">Objects /  Lifelines</h2>
+<p>There are 3 ways of defining objects/lifelines in a ckwnc diagram. You can declare an object with just a class ( :ClassName ) or with an instance name and a class ( instance_name:Classname ). The third way to create an object is just to use an undefined name in the code, doing so will create an object that has the class of the used name.</p>
+<p>The instance name AND class name are searched to find a match for a call. To explain this consider the code "Class.get()" that is contained in the diagram below. An object with the instance name OR class name "Class" is searched for, as no object matching this is found a new object with class name "Class" is created.</p>
+<pre id="example2">  :actor
+  data:DataClass
+
+  data.get()
+  DataClass.get()
+  Class.get()
+
+</pre>
+<script type="text/javascript"><!--
+  $(ckwnc.generate( $("#example2").text() )).insertAfter($("#example2"));
+// --></script>
+<h2 id="2-2">Synchronous Messages</h2>
+<p>Synchronous messages are the most common form of message in a sequence diagram. They can be created in ckwnc by using a dot ( '.' ), like calling a method on an object in a normal programming language. Optionally, a synchronous message can have messages that occur within the invocation by surrounding them with braces '{' and '}'. Again this is just like the body of a function in a normal programming language. The following example shows a message with and without subsequent messages.</p>
+<pre id="example3">  :actor
+  data:DataClass
+
+  data.get()
+  data.set()
+  {
+    DB.setValue()
+  }
+
+</pre>
+<script type="text/javascript"><!--
+  $(ckwnc.generate( $("#example3").text() )).insertAfter($("#example3"));
+// --></script>
+<h2 id="2-3">Synchronous Messages to Self</h2>
+<p>Messages can be sent to the current object by not specifying a target. For example "get()" will send the message "get" to the current object.</p>
+<pre id="example4">  get()
+
+</pre>
+<script type="text/javascript"><!--
+  $(ckwnc.generate( $("#example4").text() )).insertAfter($("#example4"));
+// --></script>
+<h2 id="2-4">Asynchronous Messages</h2>
+<p>Asynchronous messages can be defined just like synchronous messages except that the dot ( '.' ) is replaced with a greater than symbol ( '&gt;' ). Optionally, an asynchronous message can have messages that occur within the invocation by surrounding them with braces '{' and '}'. Again this is just like the body of a function in a normal programming language. The following example shows an asynchrounous message with and without subsequent messages.</p>
+<pre id="example5">  :actor
+  data:DataClass
+
+  data&gt;get()
+  data&gt;set()
+  {
+    DB.setValue()
+  }
+
+</pre>
+<script type="text/javascript"><!--
+  $(ckwnc.generate( $("#example5").text() )).insertAfter($("#example5"));
+// --></script>
+<p><strong>Note:</strong> at the moment it is not currently possible to send an asynchronous message to the current object.</p>
+<h3 id="2-4-1">Invalid Diagrams</h3>
+<p>While ckwnc attempts to layout asynchronous message the best that it can, sometimes it is possible to create diagrams that are not layed out well. This can occur when using asynchronous messages. The following example shows how this can occur. As two asynchronous messages are sent to Proxy their invocations are overlapped. When this is rendered it will be highlighted in red (just like in this example).</p>
+<p>They way to deal with situations like this is to use the pause message described in the next section to space out the invocations.</p>
+<pre id="example6">  me:Actor
+  :Proxy
+
+  Proxy&gt;create()
+  {
+    Client.do()
+  }
+  Proxy&gt;ajax ()
+  {
+    me.callback()
+  }
+
+</pre>
+<script type="text/javascript"><!--
+  $(ckwnc.generate( $("#example6").text() )).insertAfter($("#example6"));
+// --></script>
+<h3 id="2-4-2">Pause</h3>
+<p>The special "pause" message can be used to space out diagrams. This can be useful if ckwnc is creating a diagram that is not nicely layed out.</p>
+<pre id="example7">  :actor
+  data:DataClass
+
+  data.get()
+  data.get()
+  pause()
+  data.get()
+
+</pre>
+<script type="text/javascript"><!--
+  $(ckwnc.generate( $("#example7").text() )).insertAfter($("#example7"));
+// --></script>
+<h2 id="2-5">Object Creation</h2>
+<p>The special "create" message can be used to perform object creation in a diagram. Note that only a synchronous "create" message will be recognised as an actual create event.</p>
+<pre id="example8">  :actor
+  data_instance:DataClass
+
+  data_instance.create()
+  data_instance.get()
+
+</pre>
+<script type="text/javascript"><!--
+  $(ckwnc.generate( $("#example8").text() )).insertAfter($("#example8"));
+// --></script>
+<h2 id="2-6">Object Destruction</h2>
+<p>The special "destroy" message can be used to perform object destruction in a diagram. Note that only a synchronous "destroy" message will be recognised as a destruction event.</p>
+<pre id="example9">  :actor
+  data_instance:DataClass
+
+  data_instance.get()
+  data_instance.destroy()
+
+</pre>
+<script type="text/javascript"><!--
+  $(ckwnc.generate( $("#example9").text() )).insertAfter($("#example9"));
+// --></script>
+<h2 id="2-7">A Note on Style</h2>
+<p>The formatting of the code examples on this page is the personal preference of the author. The code is parsed based on white space and the reserved tokens: ":", "{", "}", "(", ")", "." and "&gt;". The only other constraint is that identifiers must be composed of letters, numbers and underscores, but cannot start with a number.</p>
+<pre id="ex_style1">  me:__Class42
+  you.test()
+
+</pre>
+<script type="text/javascript"><!--
+  $(ckwnc.generate( $("#ex_style1").text() )).insertAfter($("#ex_style1"));
+// --></script>
+<p>Is equivalent to the following:</p>
+<pre id="ex_style2">  me :  __Class42  you   .   test     (    )
+
+</pre>
+<script type="text/javascript"><!--
+  $(ckwnc.generate( $("#ex_style2").text() )).insertAfter($("#ex_style2"));
+// --></script>
+<h1 id="3">Saving a Diagram</h1>
+<p>Diagrams can be saved by clicking on the "save" button below the text input area. This will cause the "hash" of the page address to change to the id of the newly saved diagram, for example: "http://www.ckwnc.com/index.html#12345". Each time that you save a new diagram is created. You can bookmark any saved diagram and return to it at any time in the future.</p>
+<h2 id="3-1">As an Image</h2>
+<p>Diagrams can be saved as a PNG image by clicking the  "save as image" button below the text input area. This will cause a PNG image to be generated and downloaded to your browser (probably in a new tab or window).</p>
+<h2 id="3-2">As a Link</h2>
+<p>When a diagram is saved the page address is updated with a new hash that identifies the diagram, for example: "http://www.ckwnc.com/index.html#12345". This URL can be used to link to your specific diagram at any time.</p>
+<h1 id="4">Embedding Diagrams</h1>
+<p>You can use the ckwnc javascript to embed sequence diagram in any page. If you do this please download the javascript rather than linking to it.</p>
+<h2 id="4-1">Using JQuery</h2>
+<p>To embed a ckwnc diagram in a webpage using jQuery perform the following actions:</p>
+<ol>
+<li>Download the jQuery javascript from: <a href="http://docs.jquery.com/Downloading_jQuery#Current_Release">http://docs.jquery.com/Downloading_jQuery#Current_Release</a></li>
+<li>Download the ckwnc javascript from: <a href="http://www.ckwnc.com/ckwnc.js">http://www.ckwnc.com/ckwnc.js</a></li>
+<li>Include both javascript files in your page:
+<pre class="s">  &lt;script type="text/javascript" src="jquery-1.4.4.min.js"&gt;&lt;/script&gt;
+  &lt;script type="text/javascript" src="ckwnc.js"&gt;&lt;/script&gt;
+
+</pre>
+</li>
+<li>Embed the ckwnc code in your webpage:
+<pre class="s">  &lt;pre id="ckwnc"&gt;
+
+    me:__Class42
+    you.test()
+
+  &lt;/pre&gt;
+</pre>
+</li>
+<li>Generate the ckwnc canvas and add it to the page:
+<pre class="s">  &lt;script&gt;
+    $("#ckwnc").replaceWith( $(ckwnc.generate( $("#ckwnc").text() ) ) );
+  &lt;/script&gt;
+</pre>
+</li>
+</ol>
+<h2 id="4-2">WordPress</h2>
+<p>A WordPress plugin is available at <a href="http://wordpress.org/extend/plugins/ckwnc/">http://wordpress.org/extend/plugins/ckwnc/</a> for embedding ckwnc diagrams in WordPress blogs.</p>
+<h2 id="4-3">Google Gadget</h2>
+<p>You can use the google gadget ( <a href="http://www.google.com/ig/directory?type=gadgets&url=hosting.gmodules.com/ig/gadgets/file/108758157911909475173/ckwnc.xml">available here</a> ) to add sequence diagrams to iGoogle or any other container that supports gadgets. You can also embed google gadgets into any webpage. Unfortuantely google gadgets only support string user preferences so the diagram has to be compressed into a string (with no carriage returns) which makes this a little tricky for complex diagrams.</p>
+<p><a href="http://www.google.com/ig/adde?moduleurl=http://hosting.gmodules.com/ig/gadgets/file/108758157911909475173/ckwnc.xml"><img src="http://buttons.googlesyndication.com/fusion/add.gif" style="width:104px; height:17px;border:0px;" alt="Add to iGoogle" /></a></p>
+<h2 id="4-4">Other Methods</h2>
+<p>No other methods for embedding diagrams are supported at the moment. You can of course use what ever method that you like to add the canvas generated by ckwnc to a web page. If you come up with a new method please let us know.</p>
+<h1 id="5">References</h1>
+<h2 id="5-1">Other UML Sequence Diagraming Tools</h2>
+<p>If for some reason ckwnc doesn't suit your needs (please let us know why!) the following list contains links to other tools that allow creation of UML sequence diagrams.</p>
+<ul>
+<li><a href="http://www.websequencediagrams.com/">http://www.websequencediagrams.com/</a></li>
+<li><a href="http://www.umlgraph.org/">http://www.umlgraph.org/</a></li>
+<li><a href="http://sdedit.sourceforge.net/">http://sdedit.sourceforge.net/</a></li>
+<li><a href="http://sourceforge.net/projects/textuml">http://sourceforge.net/projects/textuml</a></li>
+<li><a href="http://coloruml.com/">http://coloruml.com/</a></li>
+<li><a href="http://cacoo.com/diagrams/">http://cacoo.com/diagrams/</a></li>
+<li><a href="http://www.lucidchart.com">http://www.lucidchart.com</a></li>
+<li><a href="http://www.gliffy.com">http://www.gliffy.com</a></li>
+</ul>
+<h2 id="5-2">UML Sequence Diagraming References</h2>
+<p>The following list provides links to UML sequence diagraming references that we've found useful.</p>
+<ul>
+<li><a href="http://www.agilemodeling.com/artifacts/sequenceDiagram.htm">http://www.agilemodeling.com/artifacts/sequenceDiagram.htm</a></li>
+<li><a href="http://www.ibm.com/developerworks/rational/library/3101.html">http://www.ibm.com/developerworks/rational/library/3101.html</a></li>
+<li><a href="http://www.holub.com/goodies/uml/index.html">http://www.holub.com/goodies/uml/index.html</a></li>
+<li><a href="http://www.tracemodeler.com/articles/a_quick_introduction_to_uml_sequence_diagrams/">http://www.tracemodeler.com/articles/a_quick_introduction_to_uml_sequence_diagrams/</a></li>
+<li><a href="http://www.visual-paradigm.com/VPGallery/diagrams/Sequence.html">http://www.visual-paradigm.com/VPGallery/diagrams/Sequence.html</a></li>
+<li><a href="http://www.uml-diagrams.org/sequence-diagrams.html">http://www.uml-diagrams.org/sequence-diagrams.html</a></li>
+</ul>
+<h1 id="6">Support and Feedback</h1>
+<h2 id="6-1">About</h2>
+<p>ckwnc is a 100% free tool that can be used for any purpose. If you find it useful, please let us know.</p>
+<h2 id="6-2">Contact</h2>
+<p>Have a comment, issue or request? Please use the commenting system below, otherwise you can contact us via <a href="http://www.twitter.com/ckwnc">twitter</a> or via <a href="mailto:support@ckwnc.com">email</a>.</p>
+<h2 id="6-3">Comments</h2>
+<p>To raise issues encountered, feature requests or just to leave general comments please use the following disqus commenting system.</p>
+<div id="disqus_thread"></div>
+<script type="text/javascript"><!--
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      var disqus_shortname = 'ckwnc'; // required: replace example with your forum shortname
+      // The following are highly recommended additional parameters. Remove the slashes in front to use.
+      var disqus_identifier = 'help';
+      var disqus_url = 'http://www.ckwnc.com/help.html';
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+// --></script>
+<noscript>Please enable JavaScript to view the &amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;lt;a href="http://disqus.com/?ref_noscript" mce_href="http://disqus.com/?ref_noscript"&amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;gt;comments powered by Disqus.&amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;lt;/a&amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;gt;</noscript> <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+</div>
+
+</body>
+
+</html>

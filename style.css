@@ -1,0 +1,99 @@
+/*
+ * Copyright (c) 2012, Daniel Walton (daniel@belteshazzar.com)
+ * All rights reserved.
+ * 
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *     * Redistributions of source code must retain the above copyright
+ *       notice, this list of conditions and the following disclaimer.
+ *     * Redistributions in binary form must reproduce the above copyright
+ *       notice, this list of conditions and the following disclaimer in the
+ *       documentation and/or other materials provided with the distribution.
+ *     * Neither the name of the <organization> nor the
+ *       names of its contributors may be used to endorse or promote products
+ *       derived from this software without specific prior written permission.
+ * 
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY
+ * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+#social {
+		border-left: 1px solid #000;
+		border-bottom: 1px solid #000;
+background-color: #B2B2B2;
+	width:300px; 
+	right: 0px;
+	top: 80px;
+	position:absolute; 
+	z-index:105; 
+	display: none;
+
+}
+
+#social .social-content {
+  font-family: Droid Sans, Arial, sans-serif;
+  line-height: 1.5;
+text-decoration: none;
+font-size: 14px;
+color: #000;
+
+	text-align:center; 
+	padding:10px; 
+	margin:13px;
+}
+
+#title {
+position: absolute;
+top: 0px;
+left: 0px;
+width: 100%;
+background-color: #B2B2B2;
+height: 79px;
+padding: 0px;
+margin:0px;
+border-bottom: 1px solid #000;
+visibility: visible;
+z-index: 101;
+min-width:320px;
+}
+
+#ckwnc {
+float: left;
+border-width: 0px;
+margin: 0px;
+}
+
+#menu {
+float: right;
+padding-top:20px;
+padding-right:10px;
+}
+#menu div {
+float: left;
+border-width: 0px;
+margin-top: 5px;
+margin-left: 10px;
+text-align: center;
+vertical-align: middle;
+position:relative;
+top: -4px;
+}
+
+#menu a {
+  font-family: Droid Sans, Arial, sans-serif;
+  line-height: 1.5;
+text-decoration: none;
+font-size: 14px;
+color: #000;
+}
+#menu a:hover {
+text-decoration: underline;
+}

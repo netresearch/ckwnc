@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs 
+    title="ckwnc" 
+    title_url="http://www.ckwnc.com"
+    author="Daniel Walton"
+    author_email="gbelteshazzar@gmail.com"
+    description="UML sequence diagrams"
+    scrolling="true">
+      <Require feature="dynamic-height"/>
+      <Icon>http://www.ckwnc.com/favicon.ico</Icon>
+  </ModulePrefs>
+  <UserPref name="code" 
+    display_name="Sequence Diagram Code" 
+    datatype="string"
+    default_value=":actor obj:class obj.get() { test.print() }" />
+  <Content type="html"><![CDATA[<div id="content_div"></div>
+  <script type="text/javascript" src="http://www.ckwnc.com/jquery-1.4.4.min.js"></script>
+  <script type="text/javascript" src="http://www.ckwnc.com/ckwnc.js"></script>
+  <script type="text/javascript"> 
+    var prefs = new gadgets.Prefs();
+    var txt = prefs.getString("code");
+    $(ckwnc.generate( txt )).insertAfter($("#content_div"));
+    gadgets.window.adjustHeight();
+  </script>]]></Content>
+</Module>

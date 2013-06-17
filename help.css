@@ -1,0 +1,118 @@
+/*
+ * Copyright (c) 2012, Daniel Walton (daniel@belteshazzar.com)
+ * All rights reserved.
+ * 
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *     * Redistributions of source code must retain the above copyright
+ *       notice, this list of conditions and the following disclaimer.
+ *     * Redistributions in binary form must reproduce the above copyright
+ *       notice, this list of conditions and the following disclaimer in the
+ *       documentation and/or other materials provided with the distribution.
+ *     * Neither the name of the <organization> nor the
+ *       names of its contributors may be used to endorse or promote products
+ *       derived from this software without specific prior written permission.
+ * 
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY
+ * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+body
+{
+padding: 0px;
+margin:0px;
+
+font-family: Droid Sans, Arial, sans-serif;
+  line-height: 1.5;
+font-size: 14px;
+
+}
+
+div#toc
+{
+  float: left;
+  width: 200px;
+  padding-top: 80px;
+}
+
+div#toc ul
+{
+  padding-left: 20px;
+}
+
+div#body
+{
+  margin-left: 220px;
+  margin-right: 20px; 
+  padding-top: 80px;
+}
+
+pre
+{
+	font-face: monospace;
+	font-size: 12px;
+	line-height: 12px;
+background: #f1f1f1;
+float: left;
+padding: 5px;
+}
+
+pre.s
+{
+float:none;
+background: #dddddd;
+padding: 5px;
+}
+
+canvas
+{
+  margin-left: 20px;
+  border : 1px solid #e4e4e4;
+
+}
+
+p,h1,h2,h3
+{
+/*  clear: both; */
+}
+
+h1,h2,h3
+{
+  background: #B2B2B2;
+  border-top: 1px solid #000;
+font-family: Droid Sans, Arial, sans-serif;
+  line-height: 1.5;
+font-size: 14px;
+font-weight: normal;
+  color: #000000;
+  padding: 5px;
+  padding-left: 20px;
+}
+
+h2,h3
+{
+  border-top: none;
+  background: #D1D1D1;
+}
+
+h3
+{
+  background:none;
+}
+ul li 
+{
+  list-style-type: none;
+  padding-bottom: 3px;
+}
+ol li 
+{
+  padding-bottom: 3px;
+}
