@@ -102,7 +102,7 @@ function editOrSave()
       popup("saving ...");
      state = STATE_SAVING;
       $.ajax({
-         url: 'http://'+URL+'/ckwnc.php5',
+         url: 'http://'+URL+'/ckwnc.php',
          type: 'POST',
          data: { "code": editor.getValue() },
          dataType: 'json',
@@ -155,7 +155,7 @@ function getDiagram( id )
   else
   {
      $.ajax({
-        url: 'http://'+URL+'/ckwnc.php5',
+        url: 'http://'+URL+'/ckwnc.php',
         type: 'GET',
         data: { "id": id },
         dataType: 'json',

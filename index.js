@@ -25,7 +25,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-  var URL = 'www.ckwnc.com';
+  var URL = 'seq.sobol.nr';
   //var URL = 'ckwnc.localhost';
 
     var DEFAULT = [ "steve>sent() { boo() } steve>go()"].join( "\n" );
@@ -89,7 +89,7 @@ function editOrSave()
       popup("saving ...");
      state = STATE_SAVING;
       $.ajax({
-         url: 'http://'+URL+'/ckwnc.php5',
+         url: 'http://'+URL+'/ckwnc.php',
          type: 'POST',
          data: { "code": editor.getValue() },
          dataType: 'json',
@@ -142,7 +142,7 @@ function getDiagram( id )
   else
   {
      $.ajax({
-        url: 'http://'+URL+'/ckwnc.php5',
+        url: 'http://'+URL+'/ckwnc.php',
         type: 'GET',
         data: { "id": id },
         dataType: 'json',
