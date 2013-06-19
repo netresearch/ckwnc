@@ -25,8 +25,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-  var URL = 'seq.sobol.nr';
-  //var URL = 'ckwnc.localhost';
+  var URL = document.location.hostname;
 
     var DEFAULT = [ "steve>sent() { boo() } steve>go()"].join( "\n" );
 

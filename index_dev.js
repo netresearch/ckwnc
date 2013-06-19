@@ -25,8 +25,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-  var URL = 'www.ckwnc.com';
-  var URL = 'ckwnc.localhost';
+  var URL = document.location.hostname;
 
   var D0 = [ "me:Actor",
                   ":Proxy",
