@@ -102,6 +102,8 @@ class DB
 		if ( count($result)==1 )
 		{
 			$result = array ('id' => $_GET['id'], 'code' => $result[0]['code'] );
+			header('HTTP/1.0 200 OK');
+			header('Content-type: application/json');
 			echo json_encode($result);
 		}
 		exit;
