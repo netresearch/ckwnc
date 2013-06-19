@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * Copyright (c) 2011, Daniel Walton (daniel@belteshazzar.com)
  * All rights reserved.
  *
@@ -32,96 +32,97 @@ header("Content-type: text/plain");
 
 class DB
 {
-	// using localhost
-	private $HOST = "127.0.0.1";
-	private $USER = "ckwnc";
-	private $PASS = 'password';
-	private $NAME = "ckwnc";
+    // using localhost
+    private $HOST = "127.0.0.1";
+    private $USER = "ckwnc";
+    private $PASS = 'password';
+    private $NAME = "ckwnc";
 
-	// using development database
-	/*
-	private $HOST = 'HOSTNAME';
-	private $USER = 'ckwncdev';
-	private $PASS = 'PASSWORD';
-	private $NAME = 'ckwncdev';
-	*/
+    // using development database
+    /*
+    private $HOST = 'HOSTNAME';
+    private $USER = 'ckwncdev';
+    private $PASS = 'PASSWORD';
+    private $NAME = 'ckwncdev';
+    */
 
-	// using live database
-	/*
-	private $HOST = 'HOSTNAME';
-	private $USER = 'ckwncdev';
-	private $PASS = 'PASSWORD';
-	private $NAME = 'ckwncdev';
-	*/
+    // using live database
+    /*
+    private $HOST = 'HOSTNAME';
+    private $USER = 'ckwncdev';
+    private $PASS = 'PASSWORD';
+    private $NAME = 'ckwncdev';
+    */
 
-	public function __construct()
-	{
-		mysql_connect($this->HOST,$this->USER,$this->PASS) or die("could not connect to db".mysql_error());
-		mysql_select_db($this->NAME) or die("could not select db".mysql_error());
-	}
+    public function __construct()
+    {
+        mysql_connect($this->HOST, $this->USER, $this->PASS)
+            or die("could not connect to db" . mysql_error());
+        mysql_select_db($this->NAME)
+            or die("could not select db" . mysql_error());
+    }
 
-	public function __destruct()
-	{
-		mysql_close() or die("couldn't close db connection".mysql_error());
-	}
+    public function __destruct()
+    {
+        mysql_close() or die("couldn't close db connection".mysql_error());
+    }
 
-	private function query( $sql )
-	{
-		$result = mysql_query($sql);
-		if ($result === false) {
+    private function query( $sql )
+    {
+        $result = mysql_query($sql);
+        if ($result === false) {
             trigger_error('SQL error: ' . mysql_error(). " ||| " . $sql);
         }
-		return $result;
-	}
+        return $result;
+    }
 
-	public function insert( $sql )
-	{
-		$r = $this->query($sql);
-		if ( $r ) return mysql_insert_id();
-		return false;
-	}
+    public function insert( $sql )
+    {
+        $r = $this->query($sql);
+        if ( $r ) return mysql_insert_id();
+        return false;
+    }
 
-	public function select($sql)
-	{
-		$r = $this->query($sql);
-		if ( !$r || mysql_num_rows($r)==0 ) return false;
+    public function select($sql)
+    {
+        $r = $this->query($sql);
+        if ( !$r || mysql_num_rows($r)==0 ) return false;
 
-		$result = array();
-		while ( $temp = mysql_fetch_assoc($r) ) $result[] = $temp;
+        $result = array();
+        while ( $temp = mysql_fetch_assoc($r) ) $result[] = $temp;
 
-		return $result;
-	}
+        return $result;
+    }
 }
 
 
-	$db = new DB();
+$db = new DB();
 
-	if ( isset($_GET['id']) )
-	{
-		$result = $db->select("SELECT code FROM diagrams WHERE id='" . mysql_real_escape_string($_GET['id']) . "'");
-		if ( count($result)==1 )
-		{
-			$result = array ('id' => $_GET['id'], 'code' => $result[0]['code'] );
-			header('HTTP/1.0 200 OK');
-			header('Content-type: application/json');
-			echo json_encode($result);
-		}
-		exit;
-	}
-	if ( isset($_POST['code']) )
-	{
-		if (get_magic_quotes_gpc())
-		{
-			$_POST['code'] = stripslashes($_POST['code']);
-	        }
+if (isset($_GET['id'])) {
+    $result = $db->select("SELECT code FROM diagrams WHERE id='" . mysql_real_escape_string($_GET['id']) . "'");
+    if (count($result) == 1) {
+        $result = array ('id' => $_GET['id'], 'code' => $result[0]['code'] );
+        header('HTTP/1.0 200 OK');
+        header('Content-type: application/json');
+        echo json_encode($result);
+    }
+    exit;
+}
+if (isset($_POST['code'])) {
+    if (get_magic_quotes_gpc()) {
+        $_POST['code'] = stripslashes($_POST['code']);
+    }
 
-		$id = $db->insert("INSERT INTO diagrams (code) VALUES ('" . mysql_real_escape_string( $_POST['code'] ) . "')");
+    $id = $db->insert(
+        "INSERT INTO diagrams (code) VALUES ('"
+        . mysql_real_escape_string($_POST['code'])
+        . "')"
+    );
 
-		$result = array ('id' => $id );
-                header('HTTP/1.0 201 Created');
-                header('Content-type: application/json');
-		echo json_encode($result);
-		exit(0);
-	}
-
+    $result = array ('id' => $id );
+    header('HTTP/1.0 201 Created');
+    header('Content-type: application/json');
+    echo json_encode($result);
+    exit(0);
+}
 ?>
