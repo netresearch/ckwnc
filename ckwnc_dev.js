@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2012, Daniel Walton (daniel@belteshazzar.com)
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
  *     * Redistributions of source code must retain the above copyright
@@ -12,7 +12,7 @@
  *     * Neither the name of the <organization> nor the
  *       names of its contributors may be used to endorse or promote products
  *       derived from this software without specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -269,7 +269,7 @@ var ckwnc = new function()
 
       this.indexOf = function(str)
       {
-         for ( var i=0 ; i<objs.length ; i++ ) 
+         for ( var i=0 ; i<objs.length ; i++ )
          {
             if ( objs[i].getName()==str || objs[i].getClass()==str )
             {
@@ -315,7 +315,7 @@ var ckwnc = new function()
                return objs[o].invokes[i];
             }
          }
-         return null;  
+         return null;
       };
 
       this.markLine = function( from,to,y,isDashed,text,asynch,fromInvokeId,toInvokeId,invisible )
@@ -463,7 +463,7 @@ var ckwnc = new function()
                context.moveTo(o.center-BOX_HEIGHT/6,o.top+BOX_HEIGHT/2);
                context.lineTo(o.center+BOX_HEIGHT/6,o.top+BOX_HEIGHT/2);
                context.stroke();
-               
+
                var grd=context.createLinearGradient(o.center-BOX_HEIGHT/6,o.top,o.center+BOX_HEIGHT/6,o.top);
                grd.addColorStop(0,GRAD_DARK);
                grd.addColorStop(1,GRAD_LIGHT);
@@ -571,7 +571,7 @@ var ckwnc = new function()
                to = to + LIFE_WIDTH/2*toInvokes - LIFE_WIDTH;
                context.textAlign = "left";
 
-               if ( l.text=="create" && l.y==objs[l.to].createAt ) 
+               if ( l.text=="create" && l.y==objs[l.to].createAt )
                {
                   l.text="<<create>>";
                   to -= objs[l.to].width/2 - LIFE_WIDTH/2;
@@ -597,7 +597,7 @@ var ckwnc = new function()
 
                if ( l.text=="create" && l.y==objs[l.to].createAt )
                {
-                  l.text="<<create>>"; 
+                  l.text="<<create>>";
                   to += objs[l.to].width/2 - LIFE_WIDTH/2;
                }
                else if ( l.text=="destroy" && l.y+2==objs[l.to].destroyAt )
@@ -626,7 +626,7 @@ var ckwnc = new function()
                   context.fillText(l.text,from+LIFE_WIDTH/2+TEXT_PAD,l.y*LINE_SPACING +BOX_LINE_SPACE+ BOX_TOP+BOX_HEIGHT -TEXT_PAD);
 
                   if ( ! l.isDashed )
-                  { 
+                  {
                      context.beginPath();
                      context.moveTo(from+(LIFE_WIDTH/2),l.y*LINE_SPACING +BOX_LINE_SPACE+ BOX_TOP+BOX_HEIGHT );
                      context.lineTo(from+(3*LIFE_WIDTH/2),l.y*LINE_SPACING +BOX_LINE_SPACE+ BOX_TOP+BOX_HEIGHT );
@@ -637,10 +637,10 @@ var ckwnc = new function()
                      context.dashedLine(from+(LIFE_WIDTH/2),l.y*LINE_SPACING +BOX_LINE_SPACE+ BOX_TOP+BOX_HEIGHT ,from+(3*LIFE_WIDTH/2),l.y*LINE_SPACING +BOX_LINE_SPACE+ BOX_TOP+BOX_HEIGHT ,DASH_STYLE );
                   }
                }
-               else 
+               else
                {
                   if ( ! l.isDashed )
-                  {  
+                  {
                      context.beginPath();
                      context.moveTo(from+LIFE_WIDTH,l.y*LINE_SPACING +BOX_LINE_SPACE+ BOX_TOP+BOX_HEIGHT );
                      context.lineTo(from+(3*LIFE_WIDTH/2),l.y*LINE_SPACING +BOX_LINE_SPACE+ BOX_TOP+BOX_HEIGHT );
@@ -653,7 +653,7 @@ var ckwnc = new function()
                }
 
                if ( ! l.isDashed )
-               { 
+               {
                   context.beginPath();
                   context.moveTo(from+(3*LIFE_WIDTH/2),l.y*LINE_SPACING +BOX_LINE_SPACE+ BOX_TOP+BOX_HEIGHT );
                   context.lineTo(from+(3*LIFE_WIDTH/2),(l.y+1)*LINE_SPACING +BOX_LINE_SPACE+ BOX_TOP+BOX_HEIGHT );
@@ -667,7 +667,7 @@ var ckwnc = new function()
                if ( isCall )
                {
                   if ( ! l.isDashed )
-                  { 
+                  {
                      context.beginPath();
                      context.moveTo(from+(LIFE_WIDTH),(l.y+1)*LINE_SPACING +BOX_LINE_SPACE+ BOX_TOP+BOX_HEIGHT );
                      context.lineTo(from+(3*LIFE_WIDTH/2),(l.y+1)*LINE_SPACING +BOX_LINE_SPACE+ BOX_TOP+BOX_HEIGHT );
@@ -684,7 +684,7 @@ var ckwnc = new function()
                else
                {
                   if ( ! l.isDashed )
-                  { 
+                  {
                      context.beginPath();
                      context.moveTo(from+(LIFE_WIDTH/2),(l.y+1)*LINE_SPACING +BOX_LINE_SPACE+ BOX_TOP+BOX_HEIGHT );
                      context.lineTo(from+(3*LIFE_WIDTH/2),(l.y+1)*LINE_SPACING +BOX_LINE_SPACE+ BOX_TOP+BOX_HEIGHT );
@@ -750,7 +750,7 @@ var ckwnc = new function()
                context.lineTo(left + width+ 10 ,top+FONT_HEIGHT+8 -10 );
                context.lineTo(left + width+ 10 ,top );
                context.stroke();
-               
+
                context.strokeRect( left, top, objs[a.right].center-left + LIFE_WIDTH*maxInvokes, (a.to-a.from)*LINE_SPACING);
 
                context.fillStyle = "black";
@@ -966,7 +966,7 @@ var ckwnc = new function()
                      this.markLine(objs,section_left,section_right,section_top,true,l.name,/*asynch*/true,invokeId,null,true);
                      this.markLine(objs,section_left,section_right,y,true,l.name,/*asynch*/true,invokeId,null,true);
                      this.incInvoke(objs);
-                  } 
+                  }
                   else if ( l.from==l.to )
                   {
                      y++;
@@ -1142,16 +1142,16 @@ var ckwnc = new function()
 
 var Error = function( tok, expected,id )
 {
-   this.getRow = function() 
+   this.getRow = function()
    {
       return (tok==null?-1:tok.row());
    };
-   
+
    this.getCol = function()
    {
       return (tok==null?-1:tok.col());
    };
-   
+
    this.getMsg = function()
    {
       var msg="";
@@ -1159,10 +1159,10 @@ var Error = function( tok, expected,id )
       msg += "^<br/>";
       return msg + "Expected " + expected + ", found " + (tok==null?"EOF":tok.str()) + " instead.";// {"+id+"}";
    };
-   
+
 };
-   
-   
+
+
    var parse = function( parent, objs, curObj, tokens, errors, isRoot )
    {
       var section = new Section( parent,curObj );
@@ -1199,7 +1199,7 @@ var Error = function( tok, expected,id )
             if ( isRoot )
             {
                errors.push( new Error(tok,"identifier or ':'",21));
-               continue;               
+               continue;
             }
             else
             {
@@ -1216,7 +1216,7 @@ var Error = function( tok, expected,id )
                errors.push( new Error(null, "':','.','>' or '('" ,3));
                return section;
             }
-            
+
             if (  tok.type()==CLASSIFIER )
             {
                var objName = ident.str();
@@ -1226,14 +1226,14 @@ var Error = function( tok, expected,id )
                   errors.push( new Error(null,"class name",4 ));
                   return section;
                }
-               tok = tokens.pop();               
+               tok = tokens.pop();
                if ( tok.type()!=IDENT )
                {
                   errors.push( new Error(tok,"class name",5));
                   continue;
                }
                var className = tok.str();
-               
+
                if ( objs.indexOf(objName)==-1 )
                {
                   objs.add( objName,className );
@@ -1267,14 +1267,14 @@ var Error = function( tok, expected,id )
                   errors.push( new Error(tok,"'('",9 ));
                   continue;
                }
-               
-               tok = tokens.pop();  // ) or params 
+
+               tok = tokens.pop();  // ) or params
                if ( tok==null )
                {
                   errors.push( new Error(null, "parameters or ')'" ,10));
                   return section;
                }
-               if ( tok.type()==IDENT ) 
+               if ( tok.type()==IDENT )
                {
                   methName += '('+tok.str()+')';
                   tok = tokens.pop();
@@ -1343,7 +1343,7 @@ var Error = function( tok, expected,id )
             {
                var methName = ident.str();
 
-               tok = tokens.pop();  // ) or params 
+               tok = tokens.pop();  // ) or params
                if ( tok==null )
                {
                   errors.push( new Error(null, "parameters or ')'",15 ));
@@ -1379,7 +1379,7 @@ var Error = function( tok, expected,id )
                   section.add( curObj,curObj,methName,false,subSection );
 
                   tok = tokens.pop();
-                  
+
                   if ( tok==null )
                   {
                      errors.push( new Error(tok, '}',18));
@@ -1455,7 +1455,7 @@ var Error = function( tok, expected,id )
       {
          at = 0;
       };
-      
+
       this.dump = function()
       {
          log("--- TOKENS.DUMP -------------------");
@@ -1523,7 +1523,7 @@ var Error = function( tok, expected,id )
                   token = null;
                }
                tokens.push( new Token(ln,col,BRACKET_CLOSE,')') );
-               inParams = false;   
+               inParams = false;
             }
             else if ( inString && ch!='"' )
             {
@@ -1544,7 +1544,7 @@ var Error = function( tok, expected,id )
                }
                tokens.push( new Token(ln,col,BRACKET_OPEN,'(') );
                inParams = true;
-               
+
             }
             else if ( ch=='"' )
             {
@@ -1595,7 +1595,7 @@ var Error = function( tok, expected,id )
                token += ch;
             }
          } // column loop
-         
+
          if ( inString || inParams ) token += '\n';
          else if ( token!=null )
          {
@@ -1608,7 +1608,7 @@ var Error = function( tok, expected,id )
 //      else if ( inParams ) return "unclosed parameters";
 //      else if ( openBraceCount>0 ) return "not enough closing braces";
 //      else if ( openBraceCount<0 ) return "too many closing braces";
-      /*else */return tokens;  
+      /*else */return tokens;
    };
 
    ///////////////////////////////////////////////////////////////////////////////
@@ -1660,8 +1660,8 @@ var Error = function( tok, expected,id )
       }
 
       tokens.dump();
-      
-      
+
+
       var errors = [];
       var objs = new Objs();
       var section = parse(null,objs,0,tokens,errors,true);
@@ -1691,7 +1691,7 @@ var Error = function( tok, expected,id )
          canvas.height = canvasHeight * window.devicePixelRatio;
          canvas.style.width = canvasWidth;
          canvas.style.height = canvasHeight;
-         context.scale(window.devicePixelRatio, window.devicePixelRatio);               
+         context.scale(window.devicePixelRatio, window.devicePixelRatio);
       }
 
       context.translate(0.5, 0.5);

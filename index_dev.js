@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2012, Daniel Walton (daniel@belteshazzar.com)
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
  *     * Redistributions of source code must retain the above copyright
@@ -12,7 +12,7 @@
  *     * Neither the name of the <organization> nor the
  *       names of its contributors may be used to endorse or promote products
  *       derived from this software without specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -27,7 +27,7 @@
 
   var URL = 'www.ckwnc.com';
   var URL = 'ckwnc.localhost';
-   
+
   var D0 = [ "me:Actor",
                   ":Proxy",
                   "Proxy>create()",
@@ -37,31 +37,31 @@
                   "Proxy>ajax ()",
                   "{",
                   "  me.callback()",
-                  "}"].join( "\n" ); 
-    var D1 = [ "steve>sent() { boo() } steve>go()"].join( "\n" ); 
+                  "}"].join( "\n" );
+    var D1 = [ "steve>sent() { boo() } steve>go()"].join( "\n" );
     var D2 = [ "steve>sent() { boo() }"].join( "\n" );
-    
+
     var DEFAULT = D0;
 
  //Popup dialog
  function popup(message)
- {    
-   // get the screen height and width  
-   var maskHeight = $(document).height();  
+ {
+   // get the screen height and width
+   var maskHeight = $(document).height();
    var maskWidth = $(window).width();
-   
+
    // calculate the values for center alignment
-   var dialogTop =  160; // Math.max( 100, 40 + (maskHeight/2) - ($('#dialog-box').height()) );  
-   var dialogLeft = (maskWidth/2) - ($('#dialog-box').width()/2); 
-   
+   var dialogTop =  160; // Math.max( 100, 40 + (maskHeight/2) - ($('#dialog-box').height()) );
+   var dialogLeft = (maskWidth/2) - ($('#dialog-box').width()/2);
+
    // assign values to the overlay and dialog box
    $('#dialog-overlay').css({height:maskHeight, width:maskWidth}).show();
    $('#dialog-box').css({top:dialogTop, left:dialogLeft}).show();
-   
+
    // display the message
-   if ( message ) $('#dialog-message').html(message);    
+   if ( message ) $('#dialog-message').html(message);
  }
-    
+
 var canvas = null;
 var editor = null;
 var scroller;
@@ -75,10 +75,10 @@ var STATE_TRANSITION_TO_EDIT = 3;
 var STATE_SAVING = 4;
 
 var state = STATE_LOADING;
-    
+
 function image()
 {
-   if ( canvas!=null ) 
+   if ( canvas!=null )
    {
       var img = canvas.toDataURL("image/png");
       var win = window.open("", "_blank");
@@ -91,7 +91,7 @@ function editOrSave()
    if ( state==STATE_DISPLAY )
    {
      state = STATE_TRANSITION_TO_EDIT;
-      $("#diagram").animate({ width: "50%" }, 500, function() { 
+      $("#diagram").animate({ width: "50%" }, 500, function() {
         $("#editOrSave").attr("src", "img/save_as.png");
         $("#editOrSaveText").text("save");
          state = STATE_EDITING;
@@ -111,7 +111,7 @@ function editOrSave()
            popup("an error occured saving the diagram "+ text + " "+error  + "'<a href=\"#\" class=\"button\">Close</a>");
          },
          success: function(data,text,request) {
-      $("#diagram").animate({ width: "100%" }, 500, function() { 
+      $("#diagram").animate({ width: "100%" }, 500, function() {
         $("#editOrSave").attr("src", "img/edit.png");
             $("#editOrSaveText").text("edit");
             state = STATE_DISPLAY;
@@ -137,7 +137,7 @@ function resize()
    }
    $('#dialog-overlay').css({height:$(window).height()});
 
-   if (!$('#dialog-box').is(':hidden')) popup();      
+   if (!$('#dialog-box').is(':hidden')) popup();
 }
 
 function getDiagram( id )
@@ -188,7 +188,7 @@ function initEditor()
       },
       onChange : function()
       {
-         if ( canvas!=null ) 
+         if ( canvas!=null )
          {
             $(canvas).remove();
             canvas = null;
@@ -210,7 +210,7 @@ function initEditor()
             errors = result;
             $(".errorline").mouseover( function()
             {
-               
+
                var ln = $(this).text();
                var msg = null;
                for ( var i=0 ; i<errors.length ; i++ )
@@ -235,7 +235,7 @@ function initEditor()
                .hide();
             });
          }
-         else 
+         else
          {
             $(result)
                .css({ "margin": 30,"box-shadow": "10px 10px 5px #111111" })
@@ -244,14 +244,14 @@ function initEditor()
          }
       }
    });
-   
+
    editor.setOption("theme", "eclipse");
    hlLine = editor.setLineClass(0, "activeline");
 
    scroller = editor.getScrollerElement();
    scroller.style.height = "100px";
    scroller.style.width = "100%";
-} 
+}
 
 $(document).ready(function()
 {
@@ -262,4 +262,3 @@ $(document).ready(function()
    $(window).resize(resize);
    resize();
 });
-
