@@ -1,0 +1,8 @@
+<?php
+$GLOBALS['ckwnc-cfg'] = array(
+    'host' => '127.0.0.1',
+    'user' => 'ckwnc',
+    'pass' => 'password',
+    'name' => 'ckwnc'
+);
+?>

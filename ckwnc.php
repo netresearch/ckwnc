@@ -29,33 +29,22 @@
 header('HTTP/1.0 500 Internal server error');
 header("Content-type: text/plain");
 
+require_once 'config.php';
 
 class DB
 {
-    // using localhost
-    private $HOST = "127.0.0.1";
-    private $USER = "ckwnc";
-    private $PASS = 'password';
-    private $NAME = "ckwnc";
-
-    // using development database
-    /*
-    private $HOST = 'HOSTNAME';
-    private $USER = 'ckwncdev';
-    private $PASS = 'PASSWORD';
-    private $NAME = 'ckwncdev';
-    */
-
-    // using live database
-    /*
-    private $HOST = 'HOSTNAME';
-    private $USER = 'ckwncdev';
-    private $PASS = 'PASSWORD';
-    private $NAME = 'ckwncdev';
-    */
+    private $HOST;
+    private $USER;
+    private $PASS;
+    private $NAME;
 
     public function __construct()
     {
+        $this->HOST = $GLOBALS['ckwnc-cfg']['host'];
+        $this->USER = $GLOBALS['ckwnc-cfg']['user'];
+        $this->PASS = $GLOBALS['ckwnc-cfg']['pass'];
+        $this->NAME = $GLOBALS['ckwnc-cfg']['name'];
+
         mysql_connect($this->HOST, $this->USER, $this->PASS)
             or die("could not connect to db" . mysql_error());
         mysql_select_db($this->NAME)
@@ -71,7 +60,7 @@ class DB
     {
         $result = mysql_query($sql);
         if ($result === false) {
-            trigger_error('SQL error: ' . mysql_error(). " ||| " . $sql);
+            die('SQL error: ' . mysql_error(). " ||| " . $sql);
         }
         return $result;
     }
